@@ -1,8 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Nunito_Sans } from "next/font/google";
+import Navbar from "./components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["300", "600", "800"],
+});
 
 export const metadata: Metadata = {
   title: "Rest Countries API",
@@ -16,7 +20,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={`${nunitoSans.className} min-h-[100vh] bg-veryLightGray`}
+      >
+        <Navbar mode="Dark Mode" logo="Where in the world?" />
+        {children}
+      </body>
     </html>
   );
 }
