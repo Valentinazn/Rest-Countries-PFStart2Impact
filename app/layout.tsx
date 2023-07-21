@@ -1,7 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Nunito_Sans } from "next/font/google";
+import { Nunito_Sans } from "next/font/google";
 import Navbar from "./components/Navbar";
+import { ReduxProvider } from "@/redux/provider";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -23,8 +24,10 @@ export default function RootLayout({
       <body
         className={`${nunitoSans.className} min-h-[100vh] bg-veryLightGray`}
       >
-        <Navbar mode="Dark Mode" logo="Where in the world?" />
-        {children}
+        <ReduxProvider>
+          <Navbar mode="Dark Mode" logo="Where in the world?" />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );
