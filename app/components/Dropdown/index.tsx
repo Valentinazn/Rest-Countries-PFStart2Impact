@@ -28,7 +28,7 @@ const Dropdown = ({
         <ArrowIconSvg />
       </div>
       {isOpen ? (
-        <ul className="min-w-[200px] w-full rounded-[5px] bg-white px-6 py-4 flex gap-2 flex-col">
+        <ul className="min-w-[200px] w-full rounded-[5px] bg-white px-6 py-4 flex gap-2 flex-col z-50">
           {React.Children.toArray(
             [
               Regions.Africa,
@@ -38,7 +38,11 @@ const Dropdown = ({
               Regions.Oceania,
             ].map((region) => {
               return (
-                <li value={region} onClick={() => onClick(region)}>
+                <li
+                  className="hover:cursor-pointer"
+                  value={region}
+                  onClick={() => onClick(region)}
+                >
                   {region}
                 </li>
               );
