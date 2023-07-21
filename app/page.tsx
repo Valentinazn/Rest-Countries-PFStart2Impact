@@ -19,7 +19,7 @@ export default function Home() {
         <div className="justify-self-start">
           <SearchInput placeHolderText={"Search for a country…"} />
         </div>
-        <div className="justify-self-start sm:justify-self-end">
+        <div className="justify-self-start sm:justify-self-end mb-[48px]">
           <Dropdown
             onClickOpen={() => dispatch(isOpen())}
             dropdownText={"Filter by Region..."}
@@ -28,7 +28,6 @@ export default function Home() {
           />
         </div>
       </section>
-
       <Card data={data ?? []} />
     </main>
   );
