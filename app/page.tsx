@@ -4,21 +4,61 @@ import { useFetchCountriesQuery } from "@/redux/features/countries/countriesApiS
 import Card from "./components/Card";
 import Dropdown from "./components/Dropdown";
 import SearchInput from "./components/SearchInput";
-import { useAppDispatch, useAppSelector } from "@/redux/features/hooks";
-import { isOpen } from "@/redux/features/open/openSlice";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useMemo, useState } from "react";
+import Pagination from "./components/Pagination";
+import { MyPaginationContext } from "./context/PaginationContext";
 
 export default function Home() {
   const [search, setSearch] = useState<string>("");
   const [isActive, setIsActive] = useState<string>("");
   const { data } = useFetchCountriesQuery(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const cardPerPage: number = 8;
 
-  const open = useAppSelector((state) => state.open.open);
-  const dispatch = useAppDispatch();
+  // Get currentPage
+
+  const indexOfLastCard = currentPage * cardPerPage;
+  const indexOfFistCard = indexOfLastCard - cardPerPage;
+
+  const dataWithFilter = useMemo(() => {
+    const regionItems = [
+      ...new Set(
+        data?.filter((i) =>
+          i.region.toLowerCase().includes(isActive.toLowerCase())
+        )
+      ),
+    ];
+
+    const searchItems = [
+      ...new Set(
+        data?.filter((i) =>
+          i.name.common.toLowerCase().includes(search.toLowerCase())
+        )
+      ),
+    ];
+
+    if (isActive) {
+      return regionItems;
+    }
+    if (search) {
+      return searchItems;
+    }
+
+    return data;
+  }, [data, search, isActive]);
+
+  const handleClickRegion = (e: string) => {
+    setIsActive(e);
+    setIsOpen(false);
+    setCurrentPage(1);
+  };
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setSearch(e.target.value);
+    setIsActive("");
+    setCurrentPage(1);
   };
 
   return (
@@ -32,14 +72,27 @@ export default function Home() {
         </div>
         <div className="justify-self-start sm:justify-self-end mb-[48px]">
           <Dropdown
-            onClickOpen={() => dispatch(isOpen())}
+            onClickOpen={() => setIsOpen(!isOpen)}
             dropdownText={isActive ? isActive : "Search by Region..."}
-            isOpen={open}
-            onClick={(e: string) => setIsActive(e)}
+            isOpen={isOpen}
+            onClick={handleClickRegion}
           />
         </div>
       </section>
-      <Card data={data ?? []} search={search} isActive={isActive} />
+      <Card
+        data={dataWithFilter ?? []}
+        indexOfFistCard={indexOfFistCard}
+        indexOfLastCard={indexOfLastCard}
+      />
+      <section className="max-w-[1360px]  w-[90%] my-[48px] mx-auto">
+        <MyPaginationContext.Provider value={{ currentPage, setCurrentPage }}>
+          <Pagination
+            cardsPerpage={cardPerPage}
+            totalCards={dataWithFilter?.length ?? 0}
+            currentPage={currentPage}
+          />
+        </MyPaginationContext.Provider>
+      </section>
     </main>
   );
 }

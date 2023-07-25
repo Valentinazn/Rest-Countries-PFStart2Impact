@@ -18,7 +18,7 @@ const Dropdown = ({
   return (
     <div
       className="min-w-[200px] w-full rounded-[5px] bg-white h-[56px] flex gap-1 flex-col sm:text-[14px] text-sm font-[400] leading-[20px] text-black"
-      style={{ boxShadow: "0px 2px 9px 0px rgba(0, 0, 0, 0.05);" }}
+      style={{ boxShadow: "0px 2px 9px 0px rgba(0, 0, 0, 0.05)" }}
     >
       <div
         onClick={() => onClickOpen()}
@@ -32,7 +32,7 @@ const Dropdown = ({
           {React.Children.toArray(
             [
               Regions.Africa,
-              Regions.America,
+              Regions.Americas,
               Regions.Asia,
               Regions.Europe,
               Regions.Oceania,
