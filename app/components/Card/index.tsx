@@ -1,33 +1,19 @@
 import { Welcome } from "@/app/type";
 import Image from "next/image";
-import React from "react";
+import React, { memo } from "react";
 
 interface ICard {
   data: Welcome[];
-  search: string;
-  isActive: string;
+  indexOfFistCard: number;
+  indexOfLastCard: number;
 }
 
-const Card = ({ data, search, isActive }: ICard) => {
+const Card = ({ data, indexOfFistCard, indexOfLastCard }: ICard) => {
   return (
-    <section className="grid sm:grid-cols-4 sm:w-[90%] w-[264px] grid-cols-1 max-w-[1360px] my-0 mx-auto gap-[74px]">
-      {React.Children.toArray(
-        data
-          .filter((i) => {
-            if (search) {
-              return i.name.common
-                .toLowerCase()
-                .trim()
-                .includes(search.toLowerCase().trim());
-            }
-
-            if (isActive) {
-              return i.region.toLowerCase().includes(isActive.toLowerCase());
-            }
-
-            return i;
-          })
-          .map((i) => {
+    <section>
+      <div className="grid sm:grid-cols-4 sm:w-[90%] w-[264px] grid-cols-1 max-w-[1360px] my-0 mx-auto gap-[74px] min-h-[100vh]">
+        {React.Children.toArray(
+          data?.slice(indexOfFistCard, indexOfLastCard).map((i) => {
             return (
               <div
                 className="grid grid-cols-1 w-full   bg-white h-[336px] rounded-md overflow-hidden"
@@ -60,9 +46,10 @@ const Card = ({ data, search, isActive }: ICard) => {
               </div>
             );
           })
-      )}
+        )}
+      </div>
     </section>
   );
 };
 
-export default Card;
+export default memo(Card);
