@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Welcome } from "@/app/type";
 import Image from "next/image";
 import React, { memo } from "react";
@@ -27,9 +28,12 @@ const Card = ({ data, indexOfFistCard, indexOfLastCard }: ICard) => {
                   height={160}
                 />
                 <div className="grid grid-cols-1 p-[24px]  pb-[46px]">
-                  <h3 className="text-black text-[18px] font-extrabold leading-[26px] gap-[16px]">
-                    {i.name.common}
-                  </h3>
+                  <Link href={`/details/${i.cca2}`}>
+                    <h3 className="text-black text-[18px] font-extrabold leading-[26px] gap-[16px]">
+                      {i.name.common}
+                    </h3>
+                  </Link>
+
                   <div className="grid grid-cols-1 text-black text-[14px] font-[600] leading-[16px] gap-[8px]">
                     <p>
                       Population:
