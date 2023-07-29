@@ -1,12 +1,21 @@
 "use client";
-
+import dynamic from "next/dynamic";
 import { useFetchCountriesQuery } from "@/redux/features/countries/countriesApiSlice";
-import Card from "./components/Card";
-import Dropdown from "./components/Dropdown";
-import SearchInput from "./components/SearchInput";
 import { ChangeEvent, useMemo, useState } from "react";
-import Pagination from "./components/Pagination";
 import { MyPaginationContext } from "./context/PaginationContext";
+
+const Card = dynamic(() => import("./components/Card"), {
+  loading: () => <p>Loading...</p>,
+});
+const Dropdown = dynamic(() => import("./components/Dropdown"), {
+  loading: () => <p>Loading...</p>,
+});
+const SearchInput = dynamic(() => import("./components/SearchInput"), {
+  loading: () => <p>Loading...</p>,
+});
+const Pagination = dynamic(() => import("./components/Pagination"), {
+  loading: () => <p>Loading...</p>,
+});
 
 export default function Home() {
   const [search, setSearch] = useState<string>("");

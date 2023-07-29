@@ -1,5 +1,6 @@
-import React from "react";
-import DarkModeIconSvg from "../svg/DarkModeIconSvg";
+import dynamic from "next/dynamic";
+
+const DarkModeIconSvg = dynamic(() => import("../svg/DarkModeIconSvg"));
 
 interface INavbar {
   logo: string;
