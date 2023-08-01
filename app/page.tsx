@@ -71,7 +71,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="dark:bg-black">
       <section className="max-w-[1360px]  w-[90%] grid grid-cols-1 sm:grid-cols-2 my-0 mx-auto gap-[40px] sm:gap-0 mt-6 sm:mt-[48px]">
         <div className="justify-self-start">
           <SearchInput

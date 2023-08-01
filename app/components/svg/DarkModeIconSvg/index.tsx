@@ -2,11 +2,18 @@ interface IDarkModeIconSvg {
   className: string;
   fill: string;
   stroke: string;
+  onClick: () => void;
 }
 
-const DarkModeIconSvg = ({ className, fill, stroke }: IDarkModeIconSvg) => {
+const DarkModeIconSvg = ({
+  className,
+  fill,
+  stroke,
+  onClick,
+}: IDarkModeIconSvg) => {
   return (
     <svg
+      onClick={() => onClick()}
       className={className}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
