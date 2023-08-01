@@ -2,48 +2,67 @@ import Link from "next/link";
 import { Welcome } from "@/app/type";
 import Image from "next/image";
 import React, { memo } from "react";
+import imageLoader from "@/app/assets/imageLoader";
 
 interface ICard {
   data: Welcome[];
   indexOfFistCard: number;
   indexOfLastCard: number;
+  capitalText: string;
+  populationText: string;
+  regionText: string;
 }
 
-const Card = ({ data, indexOfFistCard, indexOfLastCard }: ICard) => {
+const Card = ({
+  data,
+  indexOfFistCard,
+  indexOfLastCard,
+  capitalText,
+  populationText,
+  regionText,
+}: ICard) => {
   return (
     <section>
-      <div className="grid sm:grid-cols-4 sm:w-[90%] w-[264px] grid-cols-1 max-w-[1360px] my-0 mx-auto gap-[74px] min-h-[100vh]">
+      <div className="grid sm:grid-cols-4 sm:w-full w-[300px] grid-cols-1 my-0 mx-auto gap-[74px] ">
         {React.Children.toArray(
           data?.slice(indexOfFistCard, indexOfLastCard).map((i) => {
             return (
               <div
-                className="grid grid-cols-1 w-full dark:bg-darkBlue   bg-white h-[336px] rounded-md overflow-hidden"
+                className="grid grid-cols-1 w-full  bg-white  dark:bg-darkBlue  h-[336px] rounded-md overflow-hidden"
                 style={{ boxShadow: "0px 0px 7px 2px rgba(0, 0, 0, 0.03)" }}
               >
-                <Image
-                  className="w-full object-cover h-[160px]"
-                  src={i.flags.png}
-                  alt={i.name.common}
-                  width={267}
-                  height={160}
-                />
+                <div className="w-full relative h-[160px]">
+                  <Image
+                    className="object-cover w-full"
+                    unoptimized
+                    loader={imageLoader}
+                    src={i.flags.png}
+                    alt={i.name.common}
+                    objectFit="cover"
+                    layout="fill"
+                    priority
+                  />
+                </div>
+
                 <div className="grid grid-cols-1 p-[24px]  pb-[46px]">
                   <Link href={`/details/${i.cca2}`}>
-                    <h3 className="text-black text-[18px] font-extrabold leading-[26px] gap-[16px]">
+                    <h3 className="text-black dark:text-white  text-[18px] font-extrabold leading-[26px] gap-[16px]">
                       {i.name.common}
                     </h3>
                   </Link>
 
-                  <div className="grid grid-cols-1 text-black text-[14px] font-[600] leading-[16px] gap-[8px]">
+                  <div className="grid grid-cols-1 text-black dark:text-white text-[14px] font-[600] leading-[16px] gap-[8px]">
                     <p>
-                      Population:
+                      {populationText}:
                       <span className="font-[300]">{i.population}</span>
                     </p>
                     <p>
-                      Region:<span className="font-[300]">{i.region}</span>
+                      {regionText}:{" "}
+                      <span className="font-[300]">{i.region}</span>
                     </p>
                     <p>
-                      Capital:<span className="font-[300]">{i.capital}</span>
+                      {capitalText}:{" "}
+                      <span className="font-[300]">{i.capital}</span>
                     </p>
                   </div>
                 </div>

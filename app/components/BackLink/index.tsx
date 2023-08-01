@@ -9,9 +9,9 @@ interface IBackLink {
 const BackLink = ({ text }: IBackLink) => {
   return (
     <Link href={"/"}>
-      <div className="w-[136px] h-[40px] bg-white inline-flex justify-center items-center gap-[10px]">
-        <ArrowLeft />
-        <p className="text-darkBlue leading-5">{text}</p>
+      <div className="w-[136px] h-[40px] bg-white dark:bg-darkBlue  inline-flex justify-center items-center gap-[10px] rounded-[6px]">
+        <ArrowLeft className={"fill-black dark:fill-white"} />
+        <p className="text-darkBlue dark:text-white  leading-5">{text}</p>
       </div>
     </Link>
   );

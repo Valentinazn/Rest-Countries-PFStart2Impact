@@ -21,7 +21,7 @@ const Details = ({ params }: IDetails) => {
   const country = data?.filter((i) => i.cca2 === params.name);
 
   return (
-    <main className="max-w-[1360px]  w-[90%]  my-0 mx-auto min-h-[100vh] mb-[50px]">
+    <main className="max-w-[1360px]  w-[90%]  my-0 mx-auto min-h-[100vh]">
       <section className="lg:my-[80px] my-[64px]">
         <BackLink text={"Back"} />
       </section>
