@@ -1,5 +1,6 @@
-import React from "react";
-import SearchIconSvg from "../svg/SearchIconSvg";
+import dynamic from "next/dynamic";
+
+const SearchIconSvg = dynamic(() => import("../svg/SearchIconSvg"));
 
 interface ISearchInput {
   placeHolderText: string;

@@ -17,7 +17,7 @@ const Card = ({ data, indexOfFistCard, indexOfLastCard }: ICard) => {
           data?.slice(indexOfFistCard, indexOfLastCard).map((i) => {
             return (
               <div
-                className="grid grid-cols-1 w-full   bg-white h-[336px] rounded-md overflow-hidden"
+                className="grid grid-cols-1 w-full dark:bg-darkBlue   bg-white h-[336px] rounded-md overflow-hidden"
                 style={{ boxShadow: "0px 0px 7px 2px rgba(0, 0, 0, 0.03)" }}
               >
                 <Image

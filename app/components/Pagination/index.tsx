@@ -1,5 +1,6 @@
-import React from "react";
-import Button from "../Button";
+import dynamic from "next/dynamic";
+
+const Button = dynamic(() => import("../Button"));
 import { usePaginationContext } from "@/app/context/PaginationContext";
 
 interface IPagination {

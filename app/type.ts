@@ -14,7 +14,7 @@ export interface Welcome {
   altSpellings: string[];
   region: Region;
   subregion?: string;
-  languages?: { [key: string]: string };
+  languages: { [key: string]: string };
   translations: { [key: string]: Translation };
   latlng: number[];
   landlocked: boolean;
@@ -268,7 +268,7 @@ export interface Maps {
 export interface Name {
   common: string;
   official: string;
-  nativeName?: { [key: string]: Translation };
+  nativeName: { [key: string]: Translation };
 }
 
 export interface Translation {

@@ -1,6 +1,8 @@
 import React from "react";
-import ArrowIconSvg from "../svg/ArrowIconSvg";
 import { Regions } from "@/app/emun";
+import dynamic from "next/dynamic";
+
+const ArrowIconSvg = dynamic(() => import("../svg/ArrowIconSvg"));
 
 interface IDropdown {
   dropdownText: string;
