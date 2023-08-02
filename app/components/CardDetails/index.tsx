@@ -1,4 +1,5 @@
-import { Currencies, Name, Translation, Welcome } from "@/app/type";
+import imageLoader from "@/app/assets/imageLoader";
+import { Currencies, Translation, Welcome } from "@/app/type";
 import Image from "next/image";
 import React from "react";
 
@@ -51,22 +52,24 @@ const CardDetails = (props: ICardDetails) => {
 
           return (
             <div className="grid grid-cols-1 lg:grid-cols-2  gap-[40px] lg:gap-[144px] lg:place-items-center">
-              <div className=" justify-self-start">
+              <div className=" justify-self-start relative lg:w-[600px] w-full h-full lg:min-h-[400px] min-h-[297px]">
                 <Image
-                  className="w-full rounded-xl max-w-[600px] h-full min-h-[297px]"
+                  unoptimized
+                  loader={imageLoader}
+                  className="rounded-xl absolute"
                   src={x.flags.svg}
                   alt={x.name.common}
-                  width={300}
-                  height={300}
+                  layout="fill"
+                  priority
                 />
               </div>
 
               <div className="grid grid-cols-1 w-full gap-[70px]">
                 <div className="grid grid-cols-1 gap-[16px]">
-                  <h2 className="text-[32px] font-extrabold text-lightModeText">
+                  <h2 className="text-[32px] font-extrabold text-lightModeText  dark:text-white">
                     {x.name.common}
                   </h2>
-                  <div className="grid lg:grid-cols-2 grid-cols-1 text-lightModeText leading-8 gap-8 lg:gap-0">
+                  <div className="grid lg:grid-cols-2 grid-cols-1 text-lightModeText  dark:text-white leading-8 gap-8 lg:gap-0">
                     <div>
                       <p>
                         <span className="font-[600]">
@@ -120,7 +123,7 @@ const CardDetails = (props: ICardDetails) => {
                     </div>
                   </div>
                 </div>
-                <div className="grid lg:grid-cols-[25%_65%] grid-cols-1 h-[28px] items-start gap-4 lg:gap-0 text-lightModeText">
+                <div className="grid lg:grid-cols-[25%_65%] grid-cols-1 h-[28px] items-start gap-4 lg:gap-0 text-lightModeText dark:text-white">
                   <p className="font-[600] leading-6">
                     {props.borderCountries}:
                   </p>
@@ -130,7 +133,7 @@ const CardDetails = (props: ICardDetails) => {
                         x.borders?.map((x) => {
                           return (
                             <p
-                              className="text-[14px] border rounded-[5px]  py-[5px] max-w-[96px] bg-white"
+                              className="text-[14px] border dark:border-none rounded-[2px]  py-[5px] max-w-[96px] bg-white  dark:bg-darkBlue"
                               style={{
                                 boxShadow:
                                   "0px 0px 4px 1px rgba(0, 0, 0, 0.10)",

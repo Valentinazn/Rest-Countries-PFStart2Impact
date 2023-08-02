@@ -2,6 +2,8 @@
 const nextConfig = {
   images: {
     domains: ["flagcdn.com", "upload.wikimedia.org"],
+    loader: "custom",
+    path: "/",
   },
 };
 

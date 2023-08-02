@@ -24,9 +24,11 @@ const Pagination = ({ currentPage, cardsPerpage, totalCards }: IPagination) => {
         onClick={() => setCurrentPage(currentPage - 1)}
       />
 
-      <p className="text-black  font-extrabold">{currentPage}</p>
+      <p className="text-black dark:text-white font-extrabold">{currentPage}</p>
       <p> of</p>
-      <p className="text-black  font-extrabold">{pageNumbers.length}</p>
+      <p className="text-black dark:text-white  font-extrabold">
+        {pageNumbers.length}
+      </p>
       <Button
         text={"Next >"}
         disabled={currentPage > pageNumbers.length - 1}

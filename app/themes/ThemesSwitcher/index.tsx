@@ -2,10 +2,10 @@
 import { useTheme } from "next-themes";
 
 const DarkModeIconSvg = dynamic(
-  () => import("@/app/components/svg/DarkModeIconSvg")
+  () => import("@/app/assets/svg/DarkModeIconSvg")
 );
 const LightModeIconSvg = dynamic(
-  () => import("@/app/components/svg/LightModeIconSvg")
+  () => import("@/app/assets/svg/LightModeIconSvg")
 );
 
 import { useEffect, useState } from "react";

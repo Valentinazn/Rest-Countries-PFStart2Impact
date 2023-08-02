@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React from "react";
 interface IButton {
   text: string;
   disabled: boolean;
@@ -8,7 +8,7 @@ interface IButton {
 const Button = ({ disabled, onClick, text }: IButton) => {
   return (
     <button
-      className="rounded-[5px] bg-white leading-[20px] p-[10px] disabled:cursor-not-allowed cursor-pointer"
+      className="rounded-[5px] bg-white dark:bg-darkBlue leading-[20px] p-[10px] disabled:cursor-not-allowed cursor-pointer"
       disabled={disabled}
       style={{ boxShadow: "0px 2px 9px 0px rgba(0, 0, 0, 0.05)" }}
       onClick={(e) => onClick(e)}

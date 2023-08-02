@@ -1,5 +1,4 @@
 import ThemeSwitcher from "@/app/themes/ThemesSwitcher";
-import dynamic from "next/dynamic";
 
 interface INavbar {
   logo: string;
@@ -8,7 +7,7 @@ interface INavbar {
 const Navbar = ({ logo }: INavbar) => {
   return (
     <nav
-      className="w-full"
+      className="w-full bg-white dark:bg-darkBlue"
       style={{ boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.06)" }}
     >
       <div className="max-w-[1360px]  w-[90%] flex justify-between items-center my-0 mx-auto py-[24px] ">

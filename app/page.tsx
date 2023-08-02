@@ -71,8 +71,8 @@ export default function Home() {
   };
 
   return (
-    <main className="dark:bg-black">
-      <section className="max-w-[1360px]  w-[90%] grid grid-cols-1 sm:grid-cols-2 my-0 mx-auto gap-[40px] sm:gap-0 mt-6 sm:mt-[48px]">
+    <main className="max-w-[1360px]  w-[90%]  my-0 mx-auto min-h-[100vh]">
+      <section className="grid grid-cols-1 sm:grid-cols-2  gap-[40px] sm:gap-0 mt-6 sm:mt-[48px]">
         <div className="justify-self-start">
           <SearchInput
             placeHolderText={"Search for a country…"}
@@ -92,8 +92,11 @@ export default function Home() {
         data={dataWithFilter ?? []}
         indexOfFistCard={indexOfFistCard}
         indexOfLastCard={indexOfLastCard}
+        capitalText={"Capital"}
+        populationText={"Population"}
+        regionText={"Region"}
       />
-      <section className="max-w-[1360px]  w-[90%] my-[48px] mx-auto">
+      <section className=" my-[48px]">
         <MyPaginationContext.Provider value={{ currentPage, setCurrentPage }}>
           <Pagination
             cardsPerpage={cardPerPage}
