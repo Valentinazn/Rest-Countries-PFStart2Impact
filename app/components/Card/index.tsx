@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Welcome } from "@/app/type";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import React, { memo } from "react";
 import imageLoader from "@/app/assets/imageLoader";
 
