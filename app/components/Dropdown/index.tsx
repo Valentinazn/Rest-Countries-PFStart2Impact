@@ -1,8 +1,8 @@
 import React from "react";
-import { Regions } from "@/app/emun";
 import dynamic from "next/dynamic";
+import { Region } from "@/app/type";
 
-const ArrowIconSvg = dynamic(() => import("../svg/ArrowIconSvg"));
+const ArrowIconSvg = dynamic(() => import("../../assets/svg/ArrowIconSvg"));
 
 interface IDropdown {
   dropdownText: string;
@@ -33,11 +33,12 @@ const Dropdown = ({
         <ul className="min-w-[200px] w-full rounded-[5px] bg-white  dark:bg-darkBlue  px-6 py-4 flex gap-2 flex-col z-50">
           {React.Children.toArray(
             [
-              Regions.Africa,
-              Regions.Americas,
-              Regions.Asia,
-              Regions.Europe,
-              Regions.Oceania,
+              Region.Africa,
+              Region.Antarctic,
+              Region.Americas,
+              Region.Asia,
+              Region.Europe,
+              Region.Oceania,
             ].map((region) => {
               return (
                 <li

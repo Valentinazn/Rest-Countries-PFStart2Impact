@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 
-const SearchIconSvg = dynamic(() => import("../svg/SearchIconSvg"));
+const SearchIconSvg = dynamic(() => import("../../assets//svg/SearchIconSvg"));
 
 interface ISearchInput {
   placeHolderText: string;
