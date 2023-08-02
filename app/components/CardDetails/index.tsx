@@ -1,6 +1,6 @@
 import imageLoader from "@/app/assets/imageLoader";
 import { Currencies, Translation, Welcome } from "@/app/type";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import React from "react";
 
 interface ICardDetails {
