@@ -22,6 +22,15 @@ module.exports = {
         white: "hsl(0, 0%, 100%)",
         black: "#111517",
       },
+
+      transitionDuration: {
+        1: "1s",
+        0o3: "0.3s",
+      },
+
+      transitionTimingFunction: {
+        "in-out": "cubic-bezier(.215, .61, .355, 1)",
+      },
     },
   },
   plugins: [],

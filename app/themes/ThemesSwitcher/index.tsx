@@ -27,21 +27,23 @@ const ThemeSwitcher = () => {
     <div className="inline-flex gap-2 justify-center items-start">
       {theme === "dark" ? (
         <LightModeIconSvg
-          className={"w-[16px] h-[16px] sm:w-[20px] sm:h-[20px] cursor-pointer"}
+          className={
+            "w-[16px] h-[16px] sm:w-[20px] sm:h-[20px] cursor-pointer hover:opacity-60 transition-all duration-1 ease-out"
+          }
           fill={"white"}
-          stroke={"#111517"}
+          stroke={""}
           onClick={() => setTheme("light")}
         />
       ) : (
         <DarkModeIconSvg
           onClick={() => setTheme("dark")}
-          className="w-[16px] h-[16px] sm:w-[20px] sm:h-[20px] cursor-pointer "
-          fill={"white"}
-          stroke={"#111517"}
+          className="w-[16px] h-[16px] sm:w-[20px] sm:h-[20px] cursor-pointer hover:opacity-60 transition-all duration-1 ease-out"
+          fill={"white "}
+          stroke={"#111517 "}
         />
       )}
 
-      <h3 className="font-[600] sm:text-base text-xs ">
+      <h3 className="font-[600] sm:text-base text-xs  ">
         {theme === "dark" ? "Light Mode" : "Dark Mode"}
       </h3>
     </div>

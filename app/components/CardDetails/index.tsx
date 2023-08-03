@@ -19,7 +19,7 @@ interface ICardDetails {
 const CardDetails = (props: ICardDetails) => {
   const array: string[] = [];
 
-  function f(obj: keyof Translation) {
+  function getValueForEachKeys(obj: keyof Translation) {
     if (obj) {
       return Object.keys(obj).forEach((key) =>
         array
@@ -48,11 +48,13 @@ const CardDetails = (props: ICardDetails) => {
             ? Object.values(x.languages).toString().split(",").join(",")
             : "Not found";
 
-          f(x.name.nativeName as unknown as keyof Translation);
+          getValueForEachKeys(
+            x.name.nativeName as unknown as keyof Translation
+          );
 
           return (
             <div className="grid grid-cols-1 lg:grid-cols-2  gap-[40px] lg:gap-[144px] lg:place-items-center">
-              <div className=" justify-self-start relative lg:w-[600px] w-full h-full lg:min-h-[400px] min-h-[297px]">
+              <div className=" justify-self-start relative lg:min-w-[450px]  w-full h-full lg:min-h-[400px] min-h-[297px]">
                 <Image
                   unoptimized
                   loader={imageLoader}
@@ -67,9 +69,9 @@ const CardDetails = (props: ICardDetails) => {
               <div className="grid grid-cols-1 w-full gap-[70px]">
                 <div className="grid grid-cols-1 gap-[16px]">
                   <h2 className="text-[32px] font-extrabold text-lightModeText  dark:text-white">
-                    {x.name.common}
+                    {x.name.common ?? "Not Found"}
                   </h2>
-                  <div className="grid lg:grid-cols-2 grid-cols-1 text-lightModeText  dark:text-white leading-8 gap-8 lg:gap-0">
+                  <div className="grid md:grid-cols-2 grid-cols-1 text-lightModeText  dark:text-white leading-8 gap-8 lg:gap-0">
                     <div>
                       <p>
                         <span className="font-[600]">
@@ -82,22 +84,22 @@ const CardDetails = (props: ICardDetails) => {
                           {" "}
                           {props.populationText}
                         </span>
-                        : {x.population}
+                        : {x.population ?? "Not Found"}
                       </p>
                       <p>
                         <span className="font-[600]"> {props.regionText}</span>:{" "}
-                        {x.region}
+                        {x.region ?? "Not Found"}
                       </p>
                       <p>
                         <span className="font-[600]">
                           {" "}
                           {props.subRegionText}
                         </span>
-                        : {x.subregion}
+                        : {x.subregion ?? "Not Found"}
                       </p>
                       <p>
                         <span className="font-[600]">{props.capitalText}</span>{" "}
-                        : {x.capital}
+                        : {x.capital ?? "Not Found"}
                       </p>
                     </div>
                     <div className="lg:justify-self-end">
@@ -105,7 +107,7 @@ const CardDetails = (props: ICardDetails) => {
                         <span className="font-[600]">
                           {props.topLevelDomainText}
                         </span>
-                        : {x.tld}
+                        : {x.tld ?? "Not Found"}
                       </p>
                       <p>
                         <span className="font-[600]">
@@ -123,11 +125,12 @@ const CardDetails = (props: ICardDetails) => {
                     </div>
                   </div>
                 </div>
-                <div className="grid lg:grid-cols-[25%_65%] grid-cols-1 h-[28px] items-start gap-4 lg:gap-0 text-lightModeText dark:text-white">
+                <div className="grid md:grid-cols-[25%_65%] grid-cols-1 lg:h-[28px] items-start gap-4 lg:gap-0 text-lightModeText dark:text-white">
                   <p className="font-[600] leading-6">
                     {props.borderCountries}:
                   </p>
-                  <div className="grid lg:grid-cols-5 grid-cols-3 gap-[10px] text-center">
+
+                  <div className="grid md:grid-cols-5 grid-cols-3 gap-[10px] text-center mb-10">
                     {x.borders ? (
                       React.Children.toArray(
                         x.borders?.map((x) => {

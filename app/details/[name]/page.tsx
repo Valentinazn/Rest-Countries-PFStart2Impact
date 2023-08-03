@@ -2,12 +2,8 @@
 
 import dynamic from "next/dynamic";
 
-const CardDetails = dynamic(() => import("@/app/components/CardDetails"), {
-  loading: () => <p>Loading...</p>,
-});
-const BackLink = dynamic(() => import("@/app/components/BackLink"), {
-  loading: () => <p>Loading...</p>,
-});
+const CardDetails = dynamic(() => import("@/app/components/CardDetails"));
+const BackLink = dynamic(() => import("@/app/components/BackLink"));
 
 import { useFetchCountriesQuery } from "@/redux/features/countries/countriesApiSlice";
 
