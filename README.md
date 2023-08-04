@@ -1,4 +1,4 @@
-# Front end Mentor - Rest-Countries-API  X Start2Impact Front End Developer final project
+# Start2Impact Front End Developer final project
 
 As my final project that will allow me to obtain my master's degree as a front end developer, I chose this Front End Mentor challenge.
 
