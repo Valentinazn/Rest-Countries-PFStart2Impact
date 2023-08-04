@@ -1,6 +1,6 @@
-import imageLoader from "@/app/assets/imageLoader";
 import { Currencies, Translation, Welcome } from "@/app/type";
 import Image from "next/legacy/image";
+import Link from "next/link";
 import React from "react";
 
 interface ICardDetails {
@@ -54,14 +54,14 @@ const CardDetails = (props: ICardDetails) => {
 
           return (
             <div className="grid grid-cols-1 lg:grid-cols-2  gap-[40px] lg:gap-[144px] lg:place-items-center">
-              <div className=" justify-self-start relative lg:min-w-[450px]  w-full h-full lg:min-h-[400px] min-h-[297px]">
+              <div className=" justify-self-start relative lg:min-w-[450px] w-full  md:max-w-[500px] h-full lg:min-h-[400px] min-h-[297px]">
                 <Image
                   unoptimized
-                  loader={imageLoader}
                   className="rounded-xl absolute"
                   src={x.flags.svg}
                   alt={x.name.common}
                   layout="fill"
+                  objectFit="cover"
                   priority
                 />
               </div>
@@ -125,7 +125,7 @@ const CardDetails = (props: ICardDetails) => {
                     </div>
                   </div>
                 </div>
-                <div className="grid md:grid-cols-[25%_65%] grid-cols-1 lg:h-[28px] items-start gap-4 lg:gap-0 text-lightModeText dark:text-white">
+                <div className="grid md:grid-cols-[auto_auto] grid-cols-1 lg:h-[28px] items-start gap-4 lg:gap-0 text-lightModeText dark:text-white">
                   <p className="font-[600] leading-6">
                     {props.borderCountries}:
                   </p>
@@ -133,17 +133,19 @@ const CardDetails = (props: ICardDetails) => {
                   <div className="grid md:grid-cols-5 grid-cols-3 gap-[10px] text-center mb-10">
                     {x.borders ? (
                       React.Children.toArray(
-                        x.borders?.map((x) => {
+                        x.borders?.map((i) => {
                           return (
-                            <p
-                              className="text-[14px] border dark:border-none rounded-[2px]  py-[5px] max-w-[96px] bg-white  dark:bg-darkBlue"
-                              style={{
-                                boxShadow:
-                                  "0px 0px 4px 1px rgba(0, 0, 0, 0.10)",
-                              }}
-                            >
-                              {x}
-                            </p>
+                            <Link href={`/details/${i}`}>
+                              <p
+                                className="text-[14px] border dark:border-none rounded-[2px]  py-[5px] max-w-[96px] bg-white  dark:bg-darkBlue"
+                                style={{
+                                  boxShadow:
+                                    "0px 0px 4px 1px rgba(0, 0, 0, 0.10)",
+                                }}
+                              >
+                                {i}
+                              </p>
+                            </Link>
                           );
                         })
                       )

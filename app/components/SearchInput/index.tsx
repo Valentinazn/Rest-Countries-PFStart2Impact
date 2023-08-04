@@ -12,8 +12,7 @@ const SearchInput = ({ placeHolderText, onChange }: ISearchInput) => {
     <form
       className="
     
-      hover:animate-pulse
-      flex justify-start items-center gap-6 border-none w-full relative min-w-[343px]  sm:w-[480px] h-[56px] bg-white dark:bg-darkBlue rounded-[5px] py-[19px] px-[32px]"
+      flex justify-start items-center gap-6 border-none w-full relative sm:min-w-[343px]  sm:w-[480px] h-[56px] bg-white dark:bg-darkBlue rounded-[5px] py-[19px] px-[32px]"
       style={{ boxShadow: "0px 2px 9px 0px rgba(0, 0, 0, 0.05)" }}
     >
       <SearchIconSvg className={"fill-darkGray dark:fill-white"} />

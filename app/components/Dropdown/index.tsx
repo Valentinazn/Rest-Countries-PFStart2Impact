@@ -34,7 +34,7 @@ const Dropdown = ({
         />
       </div>
 
-      <ul
+      <div
         className={`${
           isOpen ? "opacity-[100%] " : " opacity-0 "
         } min-w-[200px] w-full rounded-[5px] bg-white h-[100vh] dark:bg-darkBlue  px-6 py-4 flex gap-2 flex-col z-50 transition-all duration-1 ease-in-out`}
@@ -49,17 +49,17 @@ const Dropdown = ({
             Region.Oceania,
           ].map((region) => {
             return (
-              <li
-                className="hover:cursor-pointer"
+              <option
+                className="hover:cursor-pointer dark:hover:bg-darkModeBackground"
                 value={region}
                 onClick={() => onClick(region)}
               >
                 {region}
-              </li>
+              </option>
             );
           })
         )}
-      </ul>
+      </div>
     </div>
   );
 };

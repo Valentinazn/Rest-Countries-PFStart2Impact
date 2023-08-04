@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   title: "Rest Countries API",
   description:
     "Application that allows you to search all the countries in the world",
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

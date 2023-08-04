@@ -14,7 +14,7 @@ interface IDetails {
 const Details = ({ params }: IDetails) => {
   const { data } = useFetchCountriesQuery(null);
 
-  const country = data?.filter((i) => i.cca2 === params.name);
+  const country = data?.filter((i) => i.cca3 === params.name);
 
   return (
     <main className="max-w-[1360px]  w-[90%]  my-0 mx-auto min-h-[100vh]">
