@@ -37,7 +37,7 @@ const Dropdown = ({
       <div
         className={`${
           isOpen ? "opacity-[100%] " : " opacity-0 "
-        } min-w-[200px] w-full rounded-[5px] bg-white h-[100vh] dark:bg-darkBlue  px-6 py-4 flex gap-2 flex-col z-50 transition-all duration-1 ease-in-out`}
+        } min-w-[200px] w-full rounded-[5px] bg-white h-[100vh] dark:bg-darkBlue py-4 flex flex-col z-50 transition-all duration-1 ease-in-out`}
       >
         {React.Children.toArray(
           [
@@ -50,7 +50,7 @@ const Dropdown = ({
           ].map((region) => {
             return (
               <option
-                className="hover:cursor-pointer dark:hover:bg-darkModeBackground"
+                className="hover:cursor-pointer hover:bg-darkGray hover:text-white dark:hover:bg-darkModeBackground  px-6 py-2"
                 value={region}
                 onClick={() => onClick(region)}
               >

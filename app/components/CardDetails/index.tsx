@@ -25,9 +25,6 @@ const CardDetails = (props: ICardDetails) => {
         array
           // @ts-ignore
           .push(obj[key].official)
-          .toString()
-          .split(",")
-          .join(",")
       );
     } else {
       return array.push("Not found");
@@ -54,14 +51,13 @@ const CardDetails = (props: ICardDetails) => {
 
           return (
             <div className="grid grid-cols-1 lg:grid-cols-2  gap-[40px] lg:gap-[144px] lg:place-items-center">
-              <div className=" justify-self-start relative lg:min-w-[450px] w-full  md:max-w-[500px] h-full lg:min-h-[400px] min-h-[297px]">
+              <div className=" justify-self-start relative lg:min-w-[450px] w-full   h-full lg:min-h-[400px] min-h-[297px]">
                 <Image
                   unoptimized
-                  className="rounded-xl absolute"
+                  className="rounded-xl absolute lg:object-cover"
                   src={x.flags.svg}
                   alt={x.name.common}
                   layout="fill"
-                  objectFit="cover"
                   priority
                 />
               </div>
@@ -71,13 +67,13 @@ const CardDetails = (props: ICardDetails) => {
                   <h2 className="text-[32px] font-extrabold text-lightModeText  dark:text-white">
                     {x.name.common ?? "Not Found"}
                   </h2>
-                  <div className="grid md:grid-cols-2 grid-cols-1 text-lightModeText  dark:text-white leading-8 gap-8 lg:gap-0">
+                  <div className="grid 2xl:grid-cols-[auto_auto] grid-cols-1 text-lightModeText  dark:text-white leading-8 gap-8">
                     <div>
                       <p>
                         <span className="font-[600]">
                           {props.nativeNameText}
                         </span>
-                        : {array}
+                        : {array.join(",")}
                       </p>
                       <p>
                         <span className="font-[600]">
@@ -98,11 +94,11 @@ const CardDetails = (props: ICardDetails) => {
                         : {x.subregion ?? "Not Found"}
                       </p>
                       <p>
-                        <span className="font-[600]">{props.capitalText}</span>{" "}
-                        : {x.capital ?? "Not Found"}
+                        <span className="font-[600]">{props.capitalText}</span>:{" "}
+                        {x.capital ?? "Not Found"}
                       </p>
                     </div>
-                    <div className="lg:justify-self-end">
+                    <div>
                       <p>
                         <span className="font-[600]">
                           {props.topLevelDomainText}
@@ -111,9 +107,9 @@ const CardDetails = (props: ICardDetails) => {
                       </p>
                       <p>
                         <span className="font-[600]">
-                          {props.currenciesText}{" "}
+                          {props.currenciesText}:{" "}
                         </span>
-                        : {currency}
+                        {currency}
                       </p>
                       <p>
                         <span className="font-[600]">
@@ -137,7 +133,7 @@ const CardDetails = (props: ICardDetails) => {
                           return (
                             <Link href={`/details/${i}`}>
                               <p
-                                className="text-[14px] border dark:border-none rounded-[2px]  py-[5px] max-w-[96px] bg-white  dark:bg-darkBlue"
+                                className="text-[14px] border dark:border-none rounded-[2px]  py-[5px] max-w-[96px]  bg-white  dark:bg-darkBlue"
                                 style={{
                                   boxShadow:
                                     "0px 0px 4px 1px rgba(0, 0, 0, 0.10)",
@@ -150,7 +146,9 @@ const CardDetails = (props: ICardDetails) => {
                         })
                       )
                     ) : (
-                      <p className="text-left">Not found</p>
+                      <p className="text-left min-w-[96px] lg:text-center">
+                        Not found
+                      </p>
                     )}
                   </div>
                 </div>
