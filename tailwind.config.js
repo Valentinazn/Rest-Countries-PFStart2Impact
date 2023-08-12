@@ -26,7 +26,6 @@ module.exports = {
       transitionDuration: {
         1: "1s",
         0o3: "0.3s",
-        5: "0.5s",
       },
 
       transitionTimingFunction: {

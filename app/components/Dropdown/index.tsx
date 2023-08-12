@@ -34,32 +34,32 @@ const Dropdown = ({
         />
       </div>
 
-      <ul
-        className={`${
-          isOpen ? "opacity-[100%] " : " opacity-0 "
-        } min-w-[200px] w-full rounded-[5px] bg-white h-[100vh] dark:bg-darkBlue py-4 flex flex-col z-50 transition-all duration-5 ease-in-out`}
-      >
-        {React.Children.toArray(
-          [
-            Region.Africa,
-            Region.Antarctic,
-            Region.Americas,
-            Region.Asia,
-            Region.Europe,
-            Region.Oceania,
-          ].map((region) => {
-            return (
-              <li
-                className="hover:cursor-pointer hover:bg-darkGray hover:text-white dark:hover:bg-darkModeBackground  px-6 py-2"
-                value={region}
-                onClick={() => onClick(region)}
-              >
-                {region}
-              </li>
-            );
-          })
-        )}
-      </ul>
+      {isOpen ? (
+        <ul
+          className={`min-w-[200px] w-full rounded-[5px] bg-white h-[100vh] dark:bg-darkBlue py-4 flex flex-col z-50`}
+        >
+          {React.Children.toArray(
+            [
+              Region.Africa,
+              Region.Antarctic,
+              Region.Americas,
+              Region.Asia,
+              Region.Europe,
+              Region.Oceania,
+            ].map((region) => {
+              return (
+                <li
+                  className="hover:cursor-pointer hover:bg-darkGray hover:text-white dark:hover:bg-darkModeBackground  px-6 py-2"
+                  value={region}
+                  onClick={() => onClick(region)}
+                >
+                  {region}
+                </li>
+              );
+            })
+          )}
+        </ul>
+      ) : null}
     </div>
   );
 };
